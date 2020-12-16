@@ -8,25 +8,27 @@
     "packages": [
         {
             "name": "infinityloop-dev/utils",
-            "version": "v2.0",
+            "version": "v2.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/infinityloop-dev/utils.git",
-                "reference": "af114152715ac72bafb4938fb9340394a5f7defa"
+                "reference": "fc1bf9cec56dde8af81ca993d8b64ce8a3ec29ab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/infinityloop-dev/utils/zipball/af114152715ac72bafb4938fb9340394a5f7defa",
-                "reference": "af114152715ac72bafb4938fb9340394a5f7defa",
+                "url": "https://api.github.com/repos/infinityloop-dev/utils/zipball/fc1bf9cec56dde8af81ca993d8b64ce8a3ec29ab",
+                "reference": "fc1bf9cec56dde8af81ca993d8b64ce8a3ec29ab",
                 "shasum": ""
             },
             "require": {
+                "ext-json": "*",
                 "nette/utils": "^3.0",
-                "php": ">=7.4"
+                "php": ">=8.0"
             },
             "require-dev": {
-                "infection/infection": "^0.16",
-                "infinityloop-dev/coding-standard": "dev-master",
+                "infection/infection": "^0.20",
+                "infinityloop-dev/coding-standard": "^0.1",
+                "phpstan/phpstan": "^0.12",
                 "phpunit/phpunit": "^9.1"
             },
             "type": "library",
@@ -49,9 +51,9 @@
             "homepage": "https://www.infinityloop.dev/",
             "support": {
                 "issues": "https://github.com/infinityloop-dev/utils/issues",
-                "source": "https://github.com/infinityloop-dev/utils/tree/v2.0"
+                "source": "https://github.com/infinityloop-dev/utils/tree/v2.1.2"
             },
-            "time": "2020-11-07T17:44:58+00:00"
+            "time": "2020-12-07T15:29:38+00:00"
         },
         {
             "name": "nette/utils",
