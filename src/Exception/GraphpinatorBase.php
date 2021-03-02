@@ -13,17 +13,30 @@ abstract class GraphpinatorBase extends \Exception implements \JsonSerializable
     protected ?\Graphpinator\Common\Path $path = null;
     protected ?array $extensions = null;
 
-    public function __construct(
-        ?\Graphpinator\Common\Location $location = null,
-        ?\Graphpinator\Common\Path $path = null,
-        ?array $extensions = null
-    )
+    public function __construct()
     {
         parent::__construct(\sprintf(static::MESSAGE, ...$this->messageArgs));
+    }
 
+    public function setLocation(\Graphpinator\Common\Location $location) : static
+    {
         $this->location = $location;
+
+        return $this;
+    }
+
+    public function setPath(\Graphpinator\Common\Path $path) : static
+    {
         $this->path = $path;
+
+        return $this;
+    }
+
+    public function setExtensions(array $extensions) : static
+    {
         $this->extensions = $extensions;
+
+        return $this;
     }
 
     public static function notOutputableResponse() : array
