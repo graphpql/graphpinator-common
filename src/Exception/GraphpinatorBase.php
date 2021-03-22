@@ -71,7 +71,7 @@ abstract class GraphpinatorBase extends \Exception implements \JsonSerializable
         return $result;
     }
 
-    protected function isOutputable() : bool
+    public function isOutputable() : bool
     {
         return false;
     }
