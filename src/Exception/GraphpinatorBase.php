@@ -18,6 +18,13 @@ abstract class GraphpinatorBase extends \Exception implements \JsonSerializable
         parent::__construct(\sprintf(static::MESSAGE, ...$this->messageArgs));
     }
 
+    public static function notOutputableResponse() : array
+    {
+        return [
+            'message' => 'Server responded with unknown error.',
+        ];
+    }
+
     public function setLocation(\Graphpinator\Common\Location $location) : static
     {
         $this->location = $location;
@@ -37,13 +44,6 @@ abstract class GraphpinatorBase extends \Exception implements \JsonSerializable
         $this->extensions = $extensions;
 
         return $this;
-    }
-
-    public static function notOutputableResponse() : array
-    {
-        return [
-            'message' => 'Server responded with unknown error.',
-        ];
     }
 
     final public function jsonSerialize() : array
