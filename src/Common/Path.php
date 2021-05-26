@@ -8,11 +8,8 @@ final class Path implements \JsonSerializable
 {
     use \Nette\SmartObject;
 
-    private array $path;
-
-    public function __construct(array $path = [])
+    public function __construct(private array $path = [])
     {
-        $this->path = $path;
     }
 
     public function add(string $pathItem) : self
