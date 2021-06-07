@@ -8,7 +8,10 @@ final class Location implements \JsonSerializable
 {
     use \Nette\SmartObject;
 
-    public function __construct(private int $line, private int $column)
+    public function __construct(
+        private int $line,
+        private int $column,
+    )
     {
     }
 
