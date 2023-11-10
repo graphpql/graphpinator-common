@@ -14,7 +14,7 @@ abstract class GraphpinatorBase extends \Exception implements ClientAware
 
     public function __construct(array $messageArgs = [])
     {
-        parent::__construct(\sprintf(static::MESSAGE, $messageArgs));
+        parent::__construct(\sprintf(static::MESSAGE, ...$messageArgs));
     }
 
     public function getLocation() : ?\Graphpinator\Common\Location
