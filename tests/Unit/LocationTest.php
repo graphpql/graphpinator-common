@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Graphpinator\Tests\Unit\Source;
+namespace Graphpinator\Tests\Unit;
 
 final class LocationTest extends \PHPUnit\Framework\TestCase
 {

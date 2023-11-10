@@ -2,22 +2,23 @@
 
 declare(strict_types = 1);
 
-namespace Graphpinator\Tests\Unit\Source;
+namespace Graphpinator\Tests\Unit;
 
-final class LocationTest extends \PHPUnit\Framework\TestCase
+final class PathTest extends \PHPUnit\Framework\TestCase
 {
     public function testSimple() : void
     {
-        $location = new \Graphpinator\Common\Location(10, 100);
+        $path = new \Graphpinator\Common\Path();
 
-        self::assertSame(10, $location->getLine());
-        self::assertSame(100, $location->getColumn());
-    }
+        self::assertSame('[]', \Infinityloop\Utils\Json::fromNative($path->jsonSerialize())->toString());
 
-    public function testSerialize() : void
-    {
-        $location = new \Graphpinator\Common\Location(10, 100);
+        $path->add('first');
+        $path->add('second');
 
-        self::assertSame(['line' => 10, 'column' => 100], $location->jsonSerialize());
+        self::assertSame('["first","second"]', \Infinityloop\Utils\Json::fromNative($path->jsonSerialize())->toString());
+
+        $path->pop();
+
+        self::assertSame('["first"]', \Infinityloop\Utils\Json::fromNative($path->jsonSerialize())->toString());
     }
 }
