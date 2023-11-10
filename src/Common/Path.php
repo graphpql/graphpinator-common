@@ -6,8 +6,6 @@ namespace Graphpinator\Common;
 
 final class Path implements \JsonSerializable
 {
-    use \Nette\SmartObject;
-
     public function __construct(
         private array $path = [],
     )

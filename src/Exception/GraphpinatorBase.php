@@ -4,25 +4,22 @@ declare(strict_types = 1);
 
 namespace Graphpinator\Exception;
 
-abstract class GraphpinatorBase extends \Exception implements \JsonSerializable
+abstract class GraphpinatorBase extends \Exception implements ClientAware
 {
     public const MESSAGE = '';
 
-    protected array $messageArgs = [];
     protected ?\Graphpinator\Common\Location $location = null;
     protected ?\Graphpinator\Common\Path $path = null;
     protected ?array $extensions = null;
 
-    public function __construct()
+    public function __construct(array $messageArgs = [])
     {
-        parent::__construct(\sprintf(static::MESSAGE, ...$this->messageArgs));
+        parent::__construct(\sprintf(static::MESSAGE, $messageArgs));
     }
 
-    public static function notOutputableResponse() : array
+    public function getLocation() : ?\Graphpinator\Common\Location
     {
-        return [
-            'message' => 'Server responded with unknown error.',
-        ];
+        return $this->location;
     }
 
     public function setLocation(\Graphpinator\Common\Location $location) : static
@@ -32,6 +29,11 @@ abstract class GraphpinatorBase extends \Exception implements \JsonSerializable
         return $this;
     }
 
+    public function getPath() : ?\Graphpinator\Common\Path
+    {
+        return $this->path;
+    }
+
     public function setPath(\Graphpinator\Common\Path $path) : static
     {
         $this->path = $path;
@@ -39,36 +41,16 @@ abstract class GraphpinatorBase extends \Exception implements \JsonSerializable
         return $this;
     }
 
+    public function getExtensions() : ?array
+    {
+        return $this->extensions;
+    }
+
     public function setExtensions(array $extensions) : static
     {
         $this->extensions = $extensions;
 
         return $this;
-    }
-
-    final public function jsonSerialize() : array
-    {
-        if (!$this->isOutputable()) {
-            return self::notOutputableResponse();
-        }
-
-        $result = [
-            'message' => $this->getMessage(),
-        ];
-
-        if ($this->location instanceof \Graphpinator\Common\Location) {
-            $result['locations'] = [$this->location];
-        }
-
-        if ($this->path instanceof \Graphpinator\Common\Path) {
-            $result['path'] = $this->path;
-        }
-
-        if (\is_array($this->extensions)) {
-            $result['extensions'] = $this->extensions;
-        }
-
-        return $result;
     }
 
     public function isOutputable() : bool
