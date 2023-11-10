@@ -6,6 +6,8 @@ namespace Graphpinator\Exception;
 
 interface ClientAware
 {
+    public function isOutputable() : bool;
+
     public function getMessage() : string;
 
     public function getLocation() : ?\Graphpinator\Common\Location;
